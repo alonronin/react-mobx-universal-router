@@ -25,13 +25,23 @@ class Link extends Component {
 	};
 
 	render() {
-		const { as: T = 'a', to, className, activeClassName = 'active', exact = false, children, ...props } = this.props;
+		const {
+			as: T = 'a',
+			to,
+			className,
+			activeClassName = 'active',
+			exact = false,
+			children,
+			...props
+		} = this.props;
 		return (
 			<T
 				href={to}
 				{...props}
 				className={cn(className, {
-					[activeClassName]: exact ? history.location.pathname === to : history.location.pathname.startsWith(to)
+					[activeClassName]: exact
+						? history.location.pathname === to
+						: history.location.pathname.startsWith(to)
 				})}
 				onClick={this.handleClick}
 			>

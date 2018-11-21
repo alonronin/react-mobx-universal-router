@@ -10,35 +10,33 @@ import ContactUs from './Contact';
 const routes = [
 	{
 		path: '',
-    action: async ({ next }) => {
-      const Component = await next();
+		action: async ({ next }) => {
+			const Component = await next();
 
-      return (
-        <App children={Component} />
-      )
-    },
-    children: [
-      {
-        path: '/',
-        action: () => <Homepage />
-      },
+			return <App children={Component} />;
+		},
+		children: [
+			{
+				path: '/',
+				action: () => <Homepage />
+			},
 
-      {
-        path: '/about',
-        action: () => <About />
-      },
+			{
+				path: '/about',
+				action: () => <About />
+			},
 
-      {
-        path: '/contact/:name?',
-        action: ContactUs
-      },
+			{
+				path: '/contact/:name?',
+				action: ContactUs
+			},
 
-      {
-        path: '(.*)',
-        action: () => <h1>404 - Not Found!</h1>
-      }
-    ]
-	},
+			{
+				path: '(.*)',
+				action: () => <h1>404 - Not Found!</h1>
+			}
+		]
+	}
 ];
 
 Router(routes).catch(console.error);
